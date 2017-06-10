@@ -5,11 +5,14 @@ from tkinter.font import Font
 import os, re
 
 class TextEditor:
+    # to quit the application
     @staticmethod
     def quitApp(event=None):
         if messagebox.askyesno("Exit Text Editor?", "Do you really want to quit?"):
             root.quit()
 
+            
+    # Update the title shown on text editor based on file that is in use
     def setTitle(self, event=None):
         title = re.findall("[ \w-]+\.", self.file_name)
         title = str(title[0])
@@ -20,6 +23,8 @@ class TextEditor:
         # Currently only prints to default printer
         os.startfile(self.file_name, "print")
 
+    # Functionality I learned while makin this text editor is how to use TkInter to open and save files
+    
     def openFile(self, event=None):
         txt_file = tkinter.filedialog.askopenfilename(parent=root, initialdir="/Users/Ishraq/PyCharmProjects")
 
@@ -55,6 +60,7 @@ class TextEditor:
 
         self.setTitle()
 
+     #update fonts on the text in the text editor   
     def changeFont(self, event=None):
         new_font = Font(family = self.text_font.get(), size = self.text_size.get())
 
